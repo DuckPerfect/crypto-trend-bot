@@ -21,6 +21,7 @@ function showLoading(element, spinnerElement) {
     element.innerHTML = ''; // Clear previous content
     element.classList.add('loading'); // Add a class for styling if needed
     spinnerElement.classList.remove('hidden');
+    hideError(trendError); // Ensure any previous error is hidden when loading starts
 }
 
 function hideLoading(element, spinnerElement) {
@@ -28,19 +29,27 @@ function hideLoading(element, spinnerElement) {
     spinnerElement.classList.add('hidden');
 }
 
+// MODIFIED: More robust error display
 function showError(errorElement, message) {
-    errorElement.textContent = message;
-    errorElement.classList.remove('hidden');
+    if (message) { // Only show if there's an actual message
+        errorElement.textContent = message;
+        errorElement.classList.remove('hidden');
+    } else { // If no message, ensure it stays hidden and cleared
+        errorElement.textContent = '';
+        errorElement.classList.add('hidden');
+    }
 }
 
+// MODIFIED: Ensure error message content is cleared when hidden
 function hideError(errorElement) {
+    errorElement.textContent = ''; // Clear text content
     errorElement.classList.add('hidden');
 }
 
 // --- Fetching Functions ---
 
 async function fetchTrendData(coin, mode) {
-    hideError(trendError);
+    // hideError(trendError); // This is now handled within showLoading for clarity
     showLoading(trendResults, trendSpinner);
     try {
         const response = await fetch(`${API_BASE_URL}/trend?coin=${coin}&mode=${mode}`);
@@ -61,7 +70,7 @@ async function fetchTrendData(coin, mode) {
 }
 
 async function fetchTopCoins() {
-    hideError(topCoinsError);
+    hideError(topCoinsError); // Ensure error is hidden before showing loading
     showLoading(topCoinsList, topCoinsSpinner);
     try {
         const response = await fetch(`${API_BASE_URL}/top_coins`);
