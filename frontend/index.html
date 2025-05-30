@@ -5,49 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrendBot - Crypto Trends</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script> </head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
 <body>
     <div class="container">
         <h1>TrendBot</h1>
-        <p class="tagline">Your go-to for quick crypto insights.</p>
+        <p class="tagline">Your personal crypto trend analyzer.</p>
 
         <div class="main-content-area">
-            <div class="trend-search-card card">
+            <div class="card trend-search-card">
                 <h2>Analyze Crypto Trend</h2>
                 <div class="input-section">
-                    <input type="text" id="coinInput" placeholder="e.g., bitcoin, ethereum" aria-label="Cryptocurrency name">
-                    <button id="searchButton" aria-label="Get Trend">Get Trend</button>
+                    <input type="text" id="coinInput" placeholder="Enter cryptocurrency name (e.g., bitcoin)">
+                    <button id="getTrendButton">Get Trend</button>
                 </div>
-
                 <div class="mode-selection">
                     <button class="mode-button active" data-mode="24h">24h Trend</button>
                     <button class="mode-button" data-mode="7d">7d Trend</button>
                     <button class="mode-button" data-mode="graph">Graph</button>
                 </div>
-
-                <div id="results" class="results-section">
-                    <p class="placeholder-text">Enter a cryptocurrency and select a mode to see its trend.</p>
-                </div>
-
-                <div id="loading" class="loading-spinner" style="display: none;">
-                    <div class="spinner"></div>
-                    <p>Fetching data...</p>
-                </div>
-
-                <div id="error" class="error-message" style="display: none;">
+                <div class="results-section" id="trendResults">
+                    <p class="placeholder-text">Enter a coin and select a mode to see its trend.</p>
+                    <div class="loading-spinner hidden" id="trendSpinner">
+                        <div class="spinner"></div>
+                        <p>Fetching data...</p>
                     </div>
+                    <p class="error-message hidden" id="trendError"></p>
+                </div>
             </div>
 
-            <div class="top-cryptos-card card">
+            <div class="card top-cryptos-card">
                 <h2>Top Cryptocurrencies</h2>
-                <div id="topCoinsList" class="top-coins-list">
-                    <p class="placeholder-text">Loading top cryptos...</p>
-                </div>
-                <div id="topCoinsLoading" class="loading-spinner" style="display: none;">
-                    <div class="spinner small-spinner"></div>
-                </div>
-                <div id="topCoinsError" class="error-message small-error" style="display: none;"></div>
+                <div class="top-coins-list" id="topCoinsList">
+                    <div class="loading-spinner" id="topCoinsSpinner">
+                        <div class="spinner small-spinner"></div>
+                        <p>Loading top cryptos...</p>
+                    </div>
+                    <p class="error-message hidden small-error" id="topCoinsError"></p>
+                    </div>
             </div>
         </div>
     </div>
