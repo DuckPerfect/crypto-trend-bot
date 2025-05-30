@@ -1,8 +1,8 @@
 // frontend/script.js
 
 // *** IMPORTANT: Update this URL to your deployed Render backend URL ***
-// Example: 'https://your-service-name.onrender.com/api'
-const API_BASE_URL = 'https://crypto-trend-bot-0eeg.onrender.com/api'; // <--- CHANGE THIS!
+// This should be the base URL of your Render service, WITHOUT /api at the end.
+const API_BASE_URL = 'https://crypto-trend-bot-0eeg.onrender.com'; // <--- CHANGE THIS: Removed '/api'
 
 const coinInput = document.getElementById('coinInput');
 const getTrendButton = document.getElementById('getTrendButton');
@@ -49,10 +49,10 @@ function hideError(errorElement) {
 // --- Fetching Functions ---
 
 async function fetchTrendData(coin, mode) {
-    // hideError(trendError); // This is now handled within showLoading for clarity
     showLoading(trendResults, trendSpinner);
     try {
-        const response = await fetch(`${API_BASE_URL}/trend?coin=${coin}&mode=${mode}`);
+        // Corrected API call: API_BASE_URL now correctly combines with /api/trend
+        const response = await fetch(`${API_BASE_URL}/api/trend?coin=${coin}&mode=${mode}`);
         const data = await response.json();
 
         hideLoading(trendResults, trendSpinner);
@@ -73,7 +73,8 @@ async function fetchTopCoins() {
     hideError(topCoinsError); // Ensure error is hidden before showing loading
     showLoading(topCoinsList, topCoinsSpinner);
     try {
-        const response = await fetch(`${API_BASE_URL}/top_coins`);
+        // Corrected API call: API_BASE_URL now correctly combines with /api/top_coins
+        const response = await fetch(`${API_BASE_URL}/api/top_coins`);
         const data = await response.json();
 
         hideLoading(topCoinsList, topCoinsSpinner);
