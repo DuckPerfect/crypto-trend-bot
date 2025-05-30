@@ -1,0 +1,6 @@
+Flask
+Flask-CORS
+pycoingecko
+matplotlib
+Flask-Caching
+gunicorn
