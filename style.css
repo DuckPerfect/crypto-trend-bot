@@ -1,0 +1,432 @@
+/* frontend/style.css */
+:root {
+    /* CachyOS inspired colors */
+    --bg-dark: #1E1E1E; /* Deeper background */
+    --card-bg: #282828; /* Slightly lighter than body bg for cards */
+    --text-light: #F8F8F2; /* Light text color */
+    --text-muted: #BD93F9; /* Muted text/label color (purple) */
+    --accent-main: #BD93F9; /* Main accent color (purple) */
+    --accent-hover: #BF80FF; /* Lighter purple on hover */
+    --border-subtle: #44475A; /* Subtle border color */
+    --success-bg: #4CAF50; /* Green for positive */
+    --success-text: #E0FFE0;
+    --error-bg: #E57373; /* Red for negative */
+    --error-text: #FFEBEE;
+    --placeholder-color: #6272A4; /* Grey-blue for placeholders */
+    --input-bg: #333333;
+    --input-border: #444444;
+
+    /* General spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 15px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Keep Inter, it's modern */
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: var(--spacing-xl) var(--spacing-md);
+    box-sizing: border-box;
+    color: var(--text-light); /* Default text color */
+    line-height: 1.6;
+}
+
+.container {
+    background-color: var(--card-bg);
+    border-radius: 8px; /* Slightly softer corners */
+    border: 1px solid var(--border-subtle); /* Subtle border */
+    padding: var(--spacing-xl);
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    box-sizing: border-box;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 3em; /* Slightly larger */
+    color: var(--accent-main);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+    letter-spacing: -0.03em; /* Subtle tightening */
+}
+
+.tagline {
+    font-size: 1.15em;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-lg);
+}
+
+.main-content-area {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle); /* Subtle border */
+    padding: var(--spacing-lg);
+    box-sizing: border-box;
+    flex: 1; /* Default flex for all cards */
+    min-width: 300px; /* Ensure a minimum width before wrapping */
+    text-align: left;
+}
+
+.trend-search-card {
+    flex: 2; /* Give it more room */
+    min-width: 400px; /* Increased min-width for the main card */
+}
+
+.top-cryptos-card {
+    flex: 1; /* Retain original flex proportion, but with adjusted min-width */
+    min-width: 350px; /* Increased min-width to prevent header truncation */
+}
+
+h2 {
+    font-size: 1.8em; /* Slightly larger headings */
+    color: var(--text-light);
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+    white-space: nowrap; /* Prevent wrapping of the header itself */
+    overflow: hidden; /* Hide overflow if it still happens */
+    text-overflow: ellipsis; /* Add ellipsis for header if it still truncates */
+}
+
+.input-section {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 14px 20px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 1.1em;
+    outline: none;
+    color: var(--text-light); /* Input text color */
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+    color: var(--placeholder-color);
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-main);
+}
+
+button {
+    padding: 14px 25px;
+    background-color: var(--accent-main);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px); /* More subtle lift */
+}
+
+button:active {
+    background-color: var(--accent-main);
+    transform: translateY(0);
+}
+
+.mode-selection {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Tighter gap */
+    margin-bottom: var(--spacing-lg);
+    background-color: var(--input-bg); /* Darker background for controls */
+    border-radius: 8px;
+    padding: 6px; /* Reduced padding */
+    border: 1px solid var(--input-border);
+}
+
+.mode-button {
+    flex: 1;
+    background-color: transparent;
+    color: var(--placeholder-color); /* Muted color for inactive */
+    padding: 10px 12px; /* Reduced padding */
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mode-button.active {
+    background-color: var(--accent-main);
+    color: var(--text-light);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.mode-button:hover:not(.active) {
+    background-color: #383838; /* Subtle hover on dark */
+    color: var(--text-light);
+}
+
+.results-section {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed var(--input-border); /* Subtle dashed border */
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    background-color: var(--input-bg); /* Match input background */
+    position: relative;
+    text-align: center;
+}
+
+.placeholder-text {
+    color: var(--placeholder-color);
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+.trend-report {
+    font-size: 1.4em; /* Slightly larger report */
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+.trend-report strong {
+    color: var(--accent-hover); /* Accent for strong text */
+    font-size: 1.1em;
+}
+
+.trend-report .direction {
+    font-weight: 700;
+}
+
+.trend-report .positive {
+    color: #8AFF8A; /* Brighter green for dark theme */
+}
+
+.trend-report .negative {
+    color: #FF6E6E; /* Brighter red for dark theme */
+}
+
+.trend-report .stable {
+    color: var(--placeholder-color);
+}
+
+.chart-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    color: var(--accent-main); /* Spinner text color */
+}
+
+.spinner {
+    border: 4px solid var(--input-border); /* Muted border */
+    border-left-color: var(--accent-main); /* Accent color for spin */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+.small-spinner {
+    width: 25px;
+    height: 25px;
+    border-width: 3px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.error-message {
+    color: var(--error-text);
+    background-color: var(--error-bg);
+    border: 1px solid darken(var(--error-bg), 10%); /* Darker border for error */
+    border-radius: 6px;
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    font-weight: 500;
+    text-align: center;
+    font-size: 0.95em;
+}
+
+.small-error {
+    padding: var(--spacing-xs);
+    font-size: 0.85em;
+}
+
+/* Top Cryptos Section */
+.top-coins-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Tighter gap */
+    margin-top: var(--spacing-md);
+    min-height: 150px;
+}
+
+.top-coin-item {
+    /* Use grid for precise column alignment */
+    grid-template-columns: minmax(80px, 2fr) auto auto; /* Name (flexible 2fr) | Price (auto) | Change (auto) */
+    display: grid;
+    align-items: center;
+    gap: 10px; /* Gap between grid items */
+    padding: 10px 15px;
+    background-color: #303030; /* Slightly different dark shade */
+    border-radius: 5px;
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-size: 0.95em;
+    color: var(--text-light);
+}
+
+.top-coin-item:hover {
+    background-color: #383838; /* Slightly lighter on hover */
+    border-color: var(--accent-main);
+}
+
+.top-coin-name {
+    font-weight: 600;
+    color: var(--text-light);
+    text-align: left; /* Ensure name is left-aligned */
+    white-space: normal; /* Allow text to wrap naturally */
+    overflow: visible; /* Ensure content is visible */
+    text-overflow: clip; /* No ellipsis by default */
+}
+
+.top-coin-price {
+    font-weight: 500;
+    color: var(--text-light);
+    text-align: right; /* Align price to the right */
+    white-space: nowrap; /* Prevent price from wrapping */
+}
+
+.top-coin-change {
+    font-weight: 600;
+    font-size: 0.85em;
+    padding: 3px 7px;
+    border-radius: 4px;
+    min-width: 60px;
+    /* Use flexbox for robust centering within the element */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;   /* Center vertically */
+    color: var(--text-light); /* Default for stable */
+    white-space: nowrap; /* Prevent change percentage from wrapping */
+}
+
+.top-coin-change.positive {
+    background-color: #388E3C; /* Darker green background */
+    color: var(--success-text); /* Light text on green */
+}
+
+.top-coin-change.negative {
+    background-color: #D32F2F; /* Darker red background */
+    color: var(--error-text); /* Light text on red */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-lg) var(--spacing-md);
+        max-width: 100%;
+    }
+    .main-content-area {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    .card {
+        width: 100%;
+        flex: none; /* Reset flex for smaller screens as they stack */
+        min-width: unset; /* Remove min-width when stacking */
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+    .input-section {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    button {
+        width: 100%;
+    }
+    .mode-selection {
+        flex-wrap: wrap;
+    }
+    .mode-button {
+        flex: auto;
+        width: 48%;
+    }
+    /* For smaller screens, adjust grid layout for top-coin-item */
+    .top-coin-item {
+        grid-template-columns: minmax(70px, 1fr) auto auto; /* Give name flex and allow price/change to be auto */
+        gap: 8px; /* Slightly reduced gap */
+    }
+    /* Ensure the name wraps if it's too long, but prioritize showing it */
+    .top-coin-name {
+        white-space: normal; /* Allow wrapping */
+        overflow: visible;
+        text-overflow: clip;
+    }
+    h2 {
+        white-space: normal; /* Allow h2 to wrap on smaller screens if needed */
+        overflow: visible;
+        text-overflow: clip;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: var(--spacing-md) var(--spacing-xs);
+    }
+    /* On very small screens, perhaps a simpler stacked layout for items if needed */
+    .top-coin-item {
+        grid-template-columns: 1fr; /* Single column layout */
+        row-gap: 5px; /* Vertical gap */
+    }
+    .top-coin-name {
+        text-align: left;
+    }
+    .top-coin-price,
+    .top-coin-change {
+        text-align: left; /* Align all elements to the left when stacked */
+        width: 100%; /* Take full width */
+        margin: 0;
+    }
+}
