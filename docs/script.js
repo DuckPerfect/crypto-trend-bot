@@ -2,7 +2,7 @@
 
 // *** IMPORTANT: Update this URL to your deployed Render backend URL ***
 // This should be the base URL of your Render service, WITHOUT /api at the end.
-const API_BASE_URL = 'https://crypto-trend-bot-0eeg.onrender.com/api/top_coins'; // <--- CHANGE THIS: Removed '/api'
+const API_BASE_URL = 'https://crypto-trend-bot-0eeg.onrender.com'; // <--- CHANGE THIS: Removed '/api'
 
 const coinInput = document.getElementById('coinInput');
 const getTrendButton = document.getElementById('getTrendButton');
